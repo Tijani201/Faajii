@@ -6,10 +6,13 @@ const router = express.Router()
 /* Route to get all movies */
 router.get('/movies', movies.getAllMovies)
 
-/* Route to get a school by id */
+/* Route to get a movie by id */
 router.get('/movies/:id', movies.getAMovie)
 
-/* Route to add a school */
+/* Route to add a movie */
 router.post('/movies/add', movies.addAMovie)
+
+/* Route to delete a movie by id */
+router.delete('/movies/:id', movies.deleteAMovie)
 
 export default router
