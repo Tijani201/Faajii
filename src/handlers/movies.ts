@@ -3,7 +3,6 @@ import { movies } from '../data/movies'
 import { BaseHandler } from '../interfaces/handler'
 
 class Movies extends BaseHandler {
-  
   // Get all movies
   static getAllMovies(req: Request, res: Response) {
     return res.status(200).send({ movies })
@@ -20,8 +19,8 @@ class Movies extends BaseHandler {
     }
   }
 
-   // Add a new movie
-   static addAMovie(req: Request, res: Response) {
+  // Add a new movie
+  static addAMovie(req: Request, res: Response) {
     const newMovie = {
       id: req.body.id,
       title: req.body.title,
@@ -45,10 +44,38 @@ class Movies extends BaseHandler {
     const movieId = Number(req.params.id)
     const theMovie = movies.find((movie) => movie.id === movieId)
     if (theMovie) {
-      movies.filter(movie => movie.id !== movieId)
+      movies.filter((movie) => movie.id !== movieId)
       return res.status(204).send()
     } else {
       return res.status(404).send({ message: 'Movie does not exist!' })
+    }
+  }
+
+  // Update a movie
+  static updateAMovie(req: Request, res: Response) {
+    const movieId = Number(req.params.id)
+    const getMovie = movies.find((movie) => movie.id === movieId)
+
+    if (!getMovie) {
+      return res
+        .status(404)
+        .send({ message: 'Movie not found! Please enter a valid movie id' })
+    } else {
+      const movieDetails = req.body
+      movies.map((movie) => {
+        if (movie.id === movieId) {
+          movie.title = movieDetails.title || movie.title
+          movie.country = movieDetails.country || movie.country
+          movie.genre = movieDetails.genre || movie.genre
+          movie.stars = movieDetails.stars || movie.stars
+          movie.language = movieDetails.language || movie.language
+          movie.release_date = movieDetails.release_date || movie.release_date
+          movie.short_desc = movieDetails.short_desc || movie.short_desc
+          return res
+            .status(201)
+            .json({ message: 'Movie Updated Successfully!', movie })
+        }
+      })
     }
   }
 }
