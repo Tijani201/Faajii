@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express'
+
+const router = express.Router()
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.status(200).send({ title: 'Welcome to Faaji API' });
-});
+const welcomeRoute = (req, res, next) => {
+  res.status(200).send({ title: 'Welcome to Faaji API' })
+}
+
+router.get('/',  welcomeRoute);
 
 module.exports = router;
