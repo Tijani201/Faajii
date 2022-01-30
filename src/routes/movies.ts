@@ -15,4 +15,7 @@ router.post('/movies/add', movies.addAMovie)
 /* Route to delete a movie by id */
 router.delete('/movies/:id', movies.deleteAMovie)
 
+/* Route to update a movie */
+router.put('/movies/:id', movies.updateAMovie)
+
 export default router
