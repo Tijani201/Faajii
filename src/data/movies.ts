@@ -63,6 +63,6 @@ export const movies: MovieType[] = [
     language: 'English, Igbo',
     release_date: 2015,
     short_desc:
-      'Amovies about tussle of powers among the bigger citizens'
+      'A movies about tussle of powers among the bigger citizens'
   }
 ]
