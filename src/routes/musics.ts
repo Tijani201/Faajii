@@ -3,7 +3,10 @@ import musics from '../handlers/musics'
 
 const router = express.Router()
 
-/* Route to get all movies */
+/* Route to get all musics */
 router.get('/musics', musics.getAllMusics)
+
+/* Route to get a music by id */
+router.get('/musics/:id', musics.getAMusic)
 
 export default router
