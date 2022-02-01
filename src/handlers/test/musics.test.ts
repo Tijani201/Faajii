@@ -27,3 +27,27 @@ describe('GET /musics', () => {
       })
   })
 })
+
+// test to delete a music
+describe('DELETE /musics/:id', () => {
+  it('should delete a music', (done) => {
+    request
+      .delete('/api/musics/1')
+      .expect(204)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(204)
+        expect(res.body).to.be.an('object')
+        done()
+      })
+  })
+  it('should display a message if music not found', (done) => {
+    request
+      .delete('/api/musics/10000')
+      .expect(404)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(404)
+        expect(res.body.message).to.be.equal('Music does not exist!')
+        done()
+      })
+  })
+})
