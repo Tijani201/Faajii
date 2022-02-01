@@ -1,3 +1,6 @@
 node_modules
+.nyc_output
+coverage
+
 # The /build folder containing the transpiled codes
 build
