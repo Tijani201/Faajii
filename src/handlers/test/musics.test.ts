@@ -75,3 +75,52 @@ describe('GET /musics/:id', () => {
       })
   })
 })
+
+// test to update a music
+describe('PUT /musics/:id', () => {
+  it('should UPDATE a music given the id', (done) => {
+    request
+      .put('/api/musics/1')
+      .send(newMusic)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Music Updated Successfully!')
+        done()
+      })
+  })
+  it('should UPDATE a music if only one feild is provided', (done) => {
+    request
+      .put('/api/musics/1')
+      .send({ title: 'confession' })
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Music Updated Successfully!')
+        done()
+      })
+  })
+  it('should UPDATE a music if only one feild is provided', (done) => {
+    request
+      .put('/api/musics/1')
+      .send({ country: 'nigeria' })
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Music Updated Successfully!')
+        done()
+      })
+  })
+  it('should return no music if id does not exist', (done) => {
+    request
+      .put('/api/musics/10')
+      .send(newMusic)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(404)
+        expect(res.body.message).be.equal(
+          'Music not found! Please enter a valid music id'
+        )
+        done()
+      })
+  })
+})
