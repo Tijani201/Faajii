@@ -51,3 +51,52 @@ describe('DELETE /movies/:id', () => {
       })
   })
 })
+
+// test to update a movie
+describe('PUT /movies/:id', () => {
+  it('should UPDATE a movie given the id', (done) => {
+    request
+      .put('/api/movies/1')
+      .send(newMovie)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Movie Updated Successfully!')
+        done()
+      })
+  })
+  it('should UPDATE a movie if only one feild is provided', (done) => {
+    request
+      .put('/api/movies/1')
+      .send({ title: 'confession' })
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Movie Updated Successfully!')
+        done()
+      })
+  })
+  it('should UPDATE a movie if only one feild is provided', (done) => {
+    request
+      .put('/api/movies/1')
+      .send({ country: 'nigeria' })
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Movie Updated Successfully!')
+        done()
+      })
+  })
+  it('should return no movie if id does not exist', (done) => {
+    request
+      .put('/api/movies/10')
+      .send(newMovie)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(404)
+        expect(res.body.message).be.equal(
+          'Movie not found! Please enter a valid movie id'
+        )
+        done()
+      })
+  })
+})
