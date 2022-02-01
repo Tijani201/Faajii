@@ -18,7 +18,6 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "swagger-ui-express": "^4.3.0",
-    "travis-cli": "^1.0.9",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
