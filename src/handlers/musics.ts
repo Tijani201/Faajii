@@ -40,7 +40,6 @@ class Musics extends BaseHandler {
       genre: req.body.genre,
       artist: req.body.artist
     }
-
     musics.push(newMusic)
     return res.status(201).send({
       message: 'Music added successfully',
@@ -52,7 +51,6 @@ class Musics extends BaseHandler {
   static updateAMusic(req: Request, res: Response) {
     const musicId = Number(req.params.id)
     const getMusic = musics.find((music) => music.id === musicId)
-
     if (!getMusic) {
       return res
         .status(404)
