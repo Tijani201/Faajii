@@ -5,7 +5,7 @@ import { BaseHandler } from '../interfaces/handler'
 class Musics extends BaseHandler {
   // Get all musics
   static getAllMusics(req: Request, res: Response) {
-    return res.status(200).send({ musics })
+    return res.status(200).send( musics )
   }
 
   // Get a music
