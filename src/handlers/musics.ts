@@ -18,6 +18,18 @@ class Musics extends BaseHandler {
       return res.status(404).send({ message: 'MUSIC NOT FOUND!' })
     }
   }
+
+   // Delete A Music
+   static deleteAMusic(req: Request, res: Response) {
+    const musicId = Number(req.params.id)
+    const theMusic = musics.find((music) => music.id === musicId)
+    if (theMusic) {
+      musics.filter((music) => music.id !== musicId)
+      return res.status(204).send()
+    } else {
+      return res.status(404).send({ message: 'Music does not exist!' })
+    }
+  }
 }
 
 export default Musics
