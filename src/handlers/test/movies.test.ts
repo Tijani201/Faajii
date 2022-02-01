@@ -13,6 +13,7 @@ const newMovie = {
   language: 'Chinese',
   release_date: 1997
 }
+
 // test to add a movie
 describe('POST /movies/add', () => {
   it('should Add movie', (done) => {
