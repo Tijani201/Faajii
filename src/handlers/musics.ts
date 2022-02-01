@@ -19,8 +19,8 @@ class Musics extends BaseHandler {
     }
   }
 
-   // Delete A Music
-   static deleteAMusic(req: Request, res: Response) {
+  // Delete A Music
+  static deleteAMusic(req: Request, res: Response) {
     const musicId = Number(req.params.id)
     const theMusic = musics.find((music) => music.id === musicId)
     if (theMusic) {
@@ -29,6 +29,23 @@ class Musics extends BaseHandler {
     } else {
       return res.status(404).send({ message: 'Music does not exist!' })
     }
+  }
+
+  // Add a new music
+  static addAMusic(req: Request, res: Response) {
+    const newMusic = {
+      id: req.body.id,
+      title: req.body.title,
+      country: req.body.country,
+      genre: req.body.genre,
+      artist: req.body.artist
+    }
+
+    musics.push(newMusic)
+    return res.status(201).send({
+      message: 'Music added successfully',
+      musics
+    })
   }
 }
 
