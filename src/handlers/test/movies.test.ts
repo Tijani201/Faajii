@@ -100,3 +100,27 @@ describe('PUT /movies/:id', () => {
       })
   })
 })
+
+// test to get a movie
+describe('GET /movies/:id', () => {
+  it('should return a specific movie', (done) => {
+    request
+      .get('/api/movies/1')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(200)
+        expect(res.body).to.be.an('object')
+        done()
+      })
+  })
+  it('should display a message if movie is not found', (done) => {
+    request
+      .get('/api/movies/1000000')
+      .expect(404)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(404)
+        expect(res.body.message).to.be.equal('MOVIES NOT FOUND!')
+        done()
+      })
+  })
+})
