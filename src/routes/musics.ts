@@ -9,4 +9,7 @@ router.get('/musics', musics.getAllMusics)
 /* Route to get a music by id */
 router.get('/musics/:id', musics.getAMusic)
 
+/* Route to delete a music by id */
+router.delete('/musics/:id', musics.deleteAMusic)
+
 export default router
