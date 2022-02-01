@@ -7,7 +7,7 @@ import indexRouter from './routes/index'
 import usersRouter from './routes/users'
 import moviesRouter from './routes/movies'
 import musicsRouter from './routes/musics'
-import swaggerUI from 'swagger-ui-express';
+import swaggerUI from 'swagger-ui-express'
 import YAML from 'yamljs'
 
 const swaggerJsDocs = YAML.load(__dirname + '/spec/api.yaml')
