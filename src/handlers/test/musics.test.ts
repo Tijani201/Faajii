@@ -127,16 +127,15 @@ describe('PUT /musics/:id', () => {
 
 // test to add a music
 describe('POST /musics/add', () => {
-    it('should Add music', (done) => {
-      request
-        .post('/api/musics/add')
-        .send(newMusic)
-        .end((err, res) => {
-          expect(res.status).to.be.equal(201)
-          expect(res.body).to.be.an('object')
-          expect(res.body.message).be.equal('Music added successfully')
-          done()
-        })
-    })
+  it('should Add music', (done) => {
+    request
+      .post('/api/musics/add')
+      .send(newMusic)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(201)
+        expect(res.body).to.be.an('object')
+        expect(res.body.message).be.equal('Music added successfully')
+        done()
+      })
   })
-  
+})
