@@ -12,4 +12,7 @@ router.get('/musics/:id', musics.getAMusic)
 /* Route to delete a music by id */
 router.delete('/musics/:id', musics.deleteAMusic)
 
+/* Route to add a music */
+router.post('/musics/add', musics.addAMusic)
+
 export default router
