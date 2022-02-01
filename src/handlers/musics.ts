@@ -47,6 +47,31 @@ class Musics extends BaseHandler {
       musics
     })
   }
+
+  // Update a music
+  static updateAMusic(req: Request, res: Response) {
+    const musicId = Number(req.params.id)
+    const getMusic = musics.find((music) => music.id === musicId)
+
+    if (!getMusic) {
+      return res
+        .status(404)
+        .send({ message: 'Music not found! Please enter a valid music id' })
+    } else {
+      const musicDetails = req.body
+      musics.map((music) => {
+        if (music.id === musicId) {
+          music.title = musicDetails.title || music.title
+          music.country = musicDetails.country || music.country
+          music.genre = musicDetails.genre || music.genre
+          music.artist = musicDetails.artist || music.artist
+          return res
+            .status(201)
+            .json({ message: 'Music Updated Successfully!', music })
+        }
+      })
+    }
+  }
 }
 
 export default Musics
