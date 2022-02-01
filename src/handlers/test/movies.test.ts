@@ -124,3 +124,17 @@ describe('GET /movies/:id', () => {
       })
   })
 })
+
+// test to get all movie
+describe('GET /movies', () => {
+  it('should return all movies', (done) => {
+    request
+      .get('/api/movies')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(200)
+        expect(res.body).to.be.an('array')
+        done()
+      })
+  })
+})
