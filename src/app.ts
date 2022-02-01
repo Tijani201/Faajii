@@ -7,7 +7,10 @@ import indexRouter from './routes/index'
 import usersRouter from './routes/users'
 import moviesRouter from './routes/movies'
 import musicsRouter from './routes/musics'
+import swaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs'
 
+const swaggerJsDocs = YAML.load(__dirname + '/spec/api.yaml')
 const app = express()
 
 app.use(logger('dev'))
@@ -16,6 +19,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJsDocs))
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/api', moviesRouter)
