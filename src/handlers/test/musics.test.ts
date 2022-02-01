@@ -51,3 +51,27 @@ describe('DELETE /musics/:id', () => {
       })
   })
 })
+
+// test to get a music
+describe('GET /musics/:id', () => {
+  it('should return a specific music', (done) => {
+    request
+      .get('/api/musics/1')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(200)
+        expect(res.body).to.be.an('object')
+        done()
+      })
+  })
+  it('should display a message if music is not found', (done) => {
+    request
+      .get('/api/musics/1000000')
+      .expect(404)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(404)
+        expect(res.body.message).to.be.equal('MUSIC NOT FOUND!')
+        done()
+      })
+  })
+})
