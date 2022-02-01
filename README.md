@@ -10,8 +10,6 @@ An entertainment api about Movies and Musics.
 
 - [![Coverage Status](https://coveralls.io/repos/github/Tijani201/Faaji/badge.svg?branch=main)](https://coveralls.io/github/Tijani201/Faaji?branch=main)
 
-- [![Build Status](https://app.travis-ci.com/Tijani201/Faaji.svg?branch=main)](https://app.travis-ci.com/Tijani201/Faaji)
-
 ## Getting Started
 
 - npm init
