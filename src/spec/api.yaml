@@ -4,13 +4,13 @@
 
 swagger: '2.0'
 info:
-  title: Faaji API
+  title: Faaji Entertainment API
   description: An entertainment app for music and movies lovers
   version: 1.0
   contact: 
-    email: 'contact@faaji.com'
+    email: 'contact@faajientertainmentapp.com'
   license:
-    name: Apache 2.0
+    title: Apache 2.0
     url: 'http://apache.org'
   servers:
     -url: 'http://localhost:3000'
@@ -41,7 +41,7 @@ paths:
 
 
 # Endpoint Documentation to GET all movies.
-  /api/schools:
+  /api/movies:
     get:
       tags:
         - Movies
@@ -67,41 +67,40 @@ paths:
                       type: string
                     stars: 
                       type: string
-                    type: 
-                      type: string
                     language:
                       type: string
-                    realease_date:
+                    release_date:
                       type: string
                     short_desc:
-                      type: string
+                      type: string  
 
-  #Endpoint Documentation to GET a specific movie                  
-  /api/movies/{id}:
+# Endpoint Documentation to GET all musics.
+  /api/musics:
     get:
       tags:
-        - Movies
-      summary: Fetch a specific movie
-      description: This endpoint returns an object representing the movie found.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: 
-            type: integer
+        - Musics
+      summary: List all musics
+      description: Fetches all musics. This endpoint returns an array of objects representing each music.
       responses:
         200:
           description: Success
           content:
             application/json:
               schema: 
-                $ref: '#/components/schemas/MovieBody'
-        404:
-          $ref: '#/components/responses/NotFoundError'
-        422:
-          $ref: '#/components/responses/BadRequestError'
-        500:
-          $ref: '#/components/responses/InternalError'
+                type: array
+                items:
+                  type: object
+                  properties: 
+                    id:
+                      type: integer
+                    title: 
+                      type: string
+                    country:
+                      type: string
+                    genre:
+                      type: string
+                    artist: 
+                      type: string
 
 # Endpoint Documentation to Delete a movie 
     delete:
@@ -110,7 +109,7 @@ paths:
       summary: Delete a movie
       description: This endpoint returns an array of movie object, except the deleted movie.
       parameters:
-        - name: id
+        - title: id
           in: path
           required: true
           schema: 
@@ -129,153 +128,12 @@ paths:
         500:
           $ref: '#/components/responses/InternalError'   
 
-# Endpoint Documentation to Update a movie  
-    put:
-      tags:
-        - Movies
-      summary: Update a movie
-      description: This endpoint returns an object representing the movie which was updated
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: 
-            type: integer
-        - name: movieRequestBody
-          in: body
-          required: true
-          schema: 
-                $ref: '#/components/schemas/MovieBody'
-      responses:
-        201:
-          description: Success 
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/MovieBody'
-        422:
-          $ref: "#/components/responses/BadRequestError"
-        500:
-          $ref: "#/components/responses/InternalError"  
-
-  # Endpoint Documentation to Add a new movie                  
-  /api/schools/add: # Can't have a duplicate endpoints even if they have different request-type
-    post:
-      tags:
-        - Movies
-      summary: Add a new movie
-      description: This endpoint returns an object representing the movie found
-      produces: 
-        - application/json
-      consumes:
-        - application/json
-      parameters:
-      - in: body
-        name: movie
-        schema: 
-          $ref: '#/components/schemas/MovieBody'
-      responses:
-        201:
-          description: Success 
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/MovieBody'
-        422:
-          $ref: "#/components/responses/BadRequestError"
-        500:
-          $ref: "#/components/responses/InternalError"  
-
-  # Endpoint Documentation to Add a new music                  
-  /api/musics/add: 
-    post:
-      tags:
-        - Musics
-      summary: Add a new music
-      description: This endpoint returns an object of musics, including the added music
-      produces: 
-        - application/json
-      consumes:
-        - application/json
-      parameters:
-      - in: body
-        name: music
-        schema: 
-          $ref: '#/components/schemas/MusicBody'
-      responses:
-        201:
-          description: Success 
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/MusicBody'
-        422:
-          $ref: "#/components/responses/BadRequestError"
-        500:
-          $ref: "#/components/responses/InternalError"
-
-  # # Endpoint Documentation to GET a specific music                
-  /api/courses/{id}:
-    get:
-      tags:
-        - Musics
-      summary: Fetch a specific music
-      description: This endpoint returns an object representing the music found.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: 
-            type: integer
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/MusicBody'
-        404:
-          $ref: '#/components/responses/NotFoundError'
-        422:
-          $ref: '#/components/responses/BadRequestError'
-        500:
-          $ref: '#/components/responses/InternalError'
-
-  # Endpoint Documentation to Update a music
-    put:
-      tags:
-        - Musics
-      summary: Update a music
-      description: This endpoint returns an object representing the music which was updated
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-        - name: musicRequestBody
-          in: body
-          required: true
-          schema:
-                $ref: '#/components/schemas/MusicBody'
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MusicBody'
-        422:
-          $ref: "#/components/responses/BadRequestError"
-        500:
-          $ref: "#/components/responses/InternalError" 
-
-  # Documentation to delete a music
+# Endpoint Documentation to Delete a music
     delete:
       tags:
         - Musics
       summary: Delete a music
-      description: This endpoint returns an array of musics object, except the deleted object.
+      description: This endpoint returns an array of musics object, except the deleted music.
       parameters:
         - name: id
           in: path
@@ -294,6 +152,174 @@ paths:
         422:
           $ref: '#/components/responses/BadRequestError'
         500:
+          $ref: '#/components/responses/InternalError'  
+
+# Endpoint Documentation to Add a new movie                 
+  /api/movies/add:
+    post:
+      tags:
+        - Movies
+      summary: Add a new movie
+      description: This endpoint returns an object representing the movie found
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        title: movie
+        schema: 
+          $ref: '#/components/schemas/MovieBody'
+      responses:
+        201:
+          description: Success 
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/MovieBody'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
+          $ref: '#/components/responses/InternalError'
+
+ # Endpoint Documentation to Add a new music                  
+  /api/musics/add: 
+    post:
+      tags:
+        - Musics
+      summary: Add a new music
+      description: This endpoint returns an object representing the music found
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        title: music
+        schema: 
+          $ref: '#/components/schemas/MusicBody'
+      responses:
+        201:
+          description: Success 
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/MusicBody'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
+          $ref: '#/components/responses/InternalError'
+
+# # Endpoint Documentation to GET a specific music                 
+  /api/musics/{id}:
+    get:
+      tags:
+        - Musics
+      summary: Fetch a specific music
+      description: This endpoint returns an object representing the movie found.
+      parameters:
+        - title: id
+          in: path
+          required: true
+          schema: 
+            type: integer
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/MovieBody'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
+          $ref: '#/components/responses/InternalError'
+
+#   Endpoint Documentation to GET a specific movie                  
+  /api/movies/{id}:
+    get:
+      tags:
+        - Movies
+      summary: Fetch a specific movie
+      description: This endpoint returns an object representing the movie found.
+      parameters:
+        - title: id
+          in: path
+          required: true
+          schema: 
+            type: integer
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/MovieBody'
+        404:
+          $ref: '#/components/responses/NotFoundError'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
+          $ref: '#/components/responses/InternalError'
+
+ # Endpoint Documentation to Update a Music
+    put:
+      tags:
+        - Musics
+      summary: Update a music
+      description: This endpoint returns an object representing the music which was updated
+      parameters:
+        - title: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - title: musicRequestBody
+          in: body
+          required: true
+          schema:
+                $ref: '#/components/schemas/MusicBody'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MusicBody'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
+          $ref: '#/components/responses/InternalError'
+
+# Endpoint Documentation to Update a movie  
+    put:
+      tags:
+        - Movies
+      summary: Update a movie
+      description: This endpoint returns an object representing the movie which was updated
+      parameters:
+        - title: id
+          in: path
+          required: true
+          schema: 
+            type: integer
+        - title: movieRequestBody
+          in: body
+          required: true
+          schema: 
+                $ref: '#/components/schemas/MovieBody'
+      responses:
+        201:
+          description: Success 
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/MovieBody'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
           $ref: '#/components/responses/InternalError'
 
 #/* ------------------------------*/
@@ -301,56 +327,56 @@ paths:
 #/* ------------------------------*/
 components:
   schemas:
-    MusicBody:
-        type: object
-        properties:
-   id:
-            type: integer
-   title: 
-            type: string
-   country:
+    MovieBody:
+      type: object
+      properties:
+          id:
+              type: integer
+            title: 
               type: string
-    genre:
-            type: string
-    artist:
-            type: string
-    MoviesBody:
+            country:
+              type: string
+          genre:
+              type: string
+          stars: 
+              type: string
+          language:
+              type: string
+          release_date:
+              type: string
+          short_desc:
+              type: string
+    MusicBody:
       type: array
       items:
         type: object
         properties: 
-          id:
-            type: integer
-      title: 
-            type: string
-      country:
-            type: string
-      genre:
-            type: string
-      stars:
-            type: string
-      language:
-            type: string
-      release_date:
-            type: string
-      short_desc:
-            type: string
+         id:
+             type: integer
+        title: 
+              type: string
+       country:
+              type: string
+       genre:
+              type: string
+       artist: 
+             type: string
   responses:
     BadRequestError:
       description: Bad Request Error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MusicBody'
+            $ref: '#/components/schemas/MovieBody'
     NotFoundError:
       description: Resource Not Found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MusicBody'
+            $ref: '#/components/schemas/MovieBody'
     InternalError:
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MusicBody'
+            $ref: '#/components/schemas/MovieBody'
