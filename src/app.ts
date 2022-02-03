@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJsDocs))
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/api/users', usersRouter)
 app.use('/api', moviesRouter)
 app.use('/api', musicsRouter)
 

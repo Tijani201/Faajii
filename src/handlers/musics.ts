@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { musics } from '../data/musics'
-import { BaseHandler } from '../interfaces/handler'
+import { BaseHandler } from '../interfaces/handlers'
 
 // Get all Music
 class Musics extends BaseHandler {
