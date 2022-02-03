@@ -13,6 +13,11 @@ const newUser = {
   confirmPassword: 'usat'
 }
 
+const customer = {
+  email: 'barcelona@gmail.com',
+  password: 'usat'
+}
+
 describe('User', () => {
   describe('POST /api/users/signup', () => {
     it('should Create New User', (done) => {
@@ -56,6 +61,78 @@ describe('User', () => {
         .end((err, res) => {
           expect(res.status).to.be.equal(400)
           expect(res.body.message).be.equal('Passwords do not match')
+          done()
+        })
+    })
+  })
+
+  describe('POST /api/users/signin', () => {
+    it('should SignIn New User', (done) => {
+      it('should Create New User', (done) => {
+        const signUpUser = {
+          firstName: 'Tijani',
+          lastName: 'Dunde',
+          email: 'tunde@gmail.com',
+          password: 'tunde',
+          confirmPassword: 'tunde'
+        }
+        request
+          .post('/api/users/signup')
+          .send(signUpUser)
+          .end((err, res) => {
+            expect(res.status).to.be.equal(201)
+            expect(res.body.message).be.equal('Sign Up Sucessful')
+            done()
+          })
+      })
+      request
+        .post('/api/users/signin')
+        .send(customer)
+        .end((err, res) => {
+          expect(res.status).to.be.equal(200)
+          expect(res.body.message).be.equal('Sign in Successful')
+          done()
+        })
+    })
+    it('should return Email or password incorrect', (done) => {
+      const userPasswordInvalid = {
+        email: 'tai@gmail.com',
+        password: 'ta'
+      }
+      request
+        .post('/api/users/signin')
+        .send(userPasswordInvalid)
+        .end((err, res) => {
+          expect(res.status).to.be.equal(400)
+          expect(res.body.message).be.equal('Email or password incorrect')
+          done()
+        })
+    })
+    it('should return Email or password incorrect', (done) => {
+      const userEmailInvalid = {
+        email: 'taigmail.com',
+        password: 'tai'
+      }
+      request
+        .post('/api/users/signin')
+        .send(userEmailInvalid)
+        .end((err, res) => {
+          expect(res.status).to.be.equal(400)
+          expect(res.body.message).be.equal('Email or password incorrect')
+          done()
+        })
+    })
+    it('should return Email or password incorrect', (done) => {
+      const emailNotFound = {
+        email: 'tada@gye.ca',
+        password: 'gtye'
+      }
+      request
+        .post('/api/users/signin')
+        .send(emailNotFound)
+        .end((err, res) => {
+          expect(res.status).to.be.equal(400)
+          expect(res.body.message).be.equal('Email or password incorrect')
           done()
         })
     })
