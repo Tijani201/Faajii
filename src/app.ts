@@ -1,5 +1,5 @@
 import createError from 'http-errors'
-import express, { Request, Response, NextFunction } from 'express'
+import express, { Request, Response} from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 })
 
 // error handler
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, req: Request, res: Response) => {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}

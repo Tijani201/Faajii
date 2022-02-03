@@ -20,7 +20,6 @@ info:
 
 schemes: [http, https]
 
-
 paths:
   /: 
     get:
@@ -72,7 +71,7 @@ paths:
                     release_date:
                       type: string
                     short_desc:
-                      type: string  
+                      type: string
 
 # Endpoint Documentation to GET all musics.
   /api/musics:
@@ -152,7 +151,7 @@ paths:
         422:
           $ref: '#/components/responses/BadRequestError'
         500:
-          $ref: '#/components/responses/InternalError'  
+          $ref: '#/components/responses/InternalError'
 
 # Endpoint Documentation to Add a new movie                 
   /api/movies/add:
@@ -180,9 +179,9 @@ paths:
         422:
           $ref: '#/components/responses/BadRequestError'
         500:
-          $ref: '#/components/responses/InternalError'
+          $ref: '#/components/responses/InternalError'  
 
- # Endpoint Documentation to Add a new music                  
+# Endpoint Documentation to Add a new music                  
   /api/musics/add: 
     post:
       tags:
@@ -210,7 +209,7 @@ paths:
         500:
           $ref: '#/components/responses/InternalError'
 
-# # Endpoint Documentation to GET a specific music                 
+# Endpoint Documentation to GET a specific music                 
   /api/musics/{id}:
     get:
       tags:
@@ -237,7 +236,7 @@ paths:
         500:
           $ref: '#/components/responses/InternalError'
 
-#   Endpoint Documentation to GET a specific movie                  
+ # Endpoint Documentation to GET a specific movie                  
   /api/movies/{id}:
     get:
       tags:
@@ -264,7 +263,7 @@ paths:
         500:
           $ref: '#/components/responses/InternalError'
 
- # Endpoint Documentation to Update a Music
+# Endpoint Documentation to Update a Music
     put:
       tags:
         - Musics
@@ -291,9 +290,9 @@ paths:
         422:
           $ref: '#/components/responses/BadRequestError'
         500:
-          $ref: '#/components/responses/InternalError'
+          $ref: '#/components/responses/InternalError' 
 
-# Endpoint Documentation to Update a movie  
+ # Endpoint Documentation to Update a movie  
     put:
       tags:
         - Movies
@@ -322,6 +321,34 @@ paths:
         500:
           $ref: '#/components/responses/InternalError'
 
+# Endpoint Documentation to Create new user          
+  /api/users/signup: 
+    post:
+      tags:
+        - Users
+      summary: Create new user
+      description: This endpoint returns an object representing the user found
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        name: user
+        schema: 
+          $ref: '#/components/schemas/UserBody'
+      responses:
+        201:
+          description: Success 
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/UserBody'
+        422:
+          $ref: '#/components/responses/BadRequestError'
+        500:
+          $ref: '#/components/responses/InternalError'
+
 #/* ------------------------------*/
 #/*      Re-useable components    */
 #/* ------------------------------*/
@@ -330,37 +357,57 @@ components:
     MovieBody:
       type: object
       properties:
-          id:
-              type: integer
-            title: 
-              type: string
-            country:
-              type: string
-          genre:
-              type: string
-          stars: 
-              type: string
-          language:
-              type: string
-          release_date:
-              type: string
-          short_desc:
-              type: string
-    MusicBody:
-      type: array
-      items:
-        type: object
-        properties: 
-         id:
-             type: integer
+        id:
+          type: integer
         title: 
-              type: string
-       country:
-              type: string
-       genre:
-              type: string
-       artist: 
-             type: string
+          type: string
+        country:
+          type: string
+        genre:
+          type: string
+        stars: 
+          type: string
+        language:
+          type: string
+        release_date:
+          type: string
+        short_desc:
+          type: string
+    MusicBody:
+        type: object
+        properties:
+          id:
+            type: integer
+          title: 
+            type: string
+          country:
+            type: string
+          genre:
+            type: string
+          artist:
+            type: string
+    UserBody:
+        type: object
+        properties:
+          id:
+            type: integer
+          firstName: 
+            type: string
+          lastName:
+            type: string
+          email:
+            type: string  
+          password:
+            type: string  
+          confirmPassword:
+            type: string    
+    UserBody:
+        type: object
+        properties:
+          email:
+            type: string  
+          password:
+            type: string 
   responses:
     BadRequestError:
       description: Bad Request Error
