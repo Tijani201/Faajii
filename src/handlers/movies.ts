@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { movies } from '../data/movies'
-import { BaseHandler } from '../interfaces/handler'
+import { BaseHandler } from '../interfaces/handlers'
 
 class Movies extends BaseHandler {
   // Get all movies
