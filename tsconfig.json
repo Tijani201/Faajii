@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     /* Language and Environment */
-    "target": "es6" /* Set the JavaScript language version for emitted JavaScript and include compatible library 
+    //"types": [ "node" ],
+    "target": "es6" /* Set the JavaScript language version for emitted JavaScript and include compatible library
 
     /* Modules */,
     "module": "commonjs" /* Specify what module code is generated. */,

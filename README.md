@@ -1,8 +1,8 @@
-# Faaji
+# Faaji Api
 
-An entertainment api
+An entertainment api about Movies and Musics.
 
-## Technology Stack used
+## What we worked with
 
 - JavaScript (the scripting language)
 - Express js
@@ -10,19 +10,18 @@ An entertainment api
 
 - [![Coverage Status](https://coveralls.io/repos/github/Tijani201/Faaji/badge.svg?branch=main)](https://coveralls.io/github/Tijani201/Faaji?branch=main)
 
-- [![Build Status](https://travis-ci.com/Tijani201/Faaji.svg?token=4LQupjQR2xwByx6zUpW5&branch=main)](https://travis-ci.com/Tijani201/Faaji)
 ## Getting Started
 
-- Clone the repo
+- npm init
 
-`$ git clone https://github.com/coding-class-home/sch-finder-api.git`
+- you can also clone the repo
+
+`$ git clone https://github.com/Tijani201/Faaji.git`
 
 - Install dependencies by running
-
 
 `$ npm install`
 
 - To start the application, run
-
 
 `$ npm start`

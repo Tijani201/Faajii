@@ -71,7 +71,7 @@ describe('User', () => {
       it('should Create New User', (done) => {
         const signUpUser = {
           firstName: 'Tijani',
-          lastName: 'Dunde',
+          lastName: 'Tunde',
           email: 'tunde@gmail.com',
           password: 'tunde',
           confirmPassword: 'tunde'
@@ -96,8 +96,8 @@ describe('User', () => {
     })
     it('should return Email or password incorrect', (done) => {
       const userPasswordInvalid = {
-        email: 'tai@gmail.com',
-        password: 'ta'
+        email: 'teej@gmail.com',
+        password: 'usa'
       }
       request
         .post('/api/users/signin')
@@ -110,8 +110,8 @@ describe('User', () => {
     })
     it('should return Email or password incorrect', (done) => {
       const userEmailInvalid = {
-        email: 'taigmail.com',
-        password: 'tai'
+        email: 'teejgmail.com',
+        password: 'usa'
       }
       request
         .post('/api/users/signin')
@@ -124,8 +124,8 @@ describe('User', () => {
     })
     it('should return Email or password incorrect', (done) => {
       const emailNotFound = {
-        email: 'tada@gye.ca',
-        password: 'gtye'
+        email: 'dhes@gye.ce',
+        password: 'bar'
       }
       request
         .post('/api/users/signin')

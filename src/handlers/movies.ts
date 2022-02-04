@@ -2,10 +2,10 @@ import { Request, Response } from 'express'
 import { movies } from '../data/movies'
 import { BaseHandler } from '../interfaces/handlers'
 
+// Get all movies
 class Movies extends BaseHandler {
-  // Get all movies
   static getAllMovies(req: Request, res: Response) {
-    return res.status(200).send( movies )
+    return res.status(200).send(movies)
   }
 
   // Get a movie
@@ -31,7 +31,6 @@ class Movies extends BaseHandler {
       release_date: req.body.release_date,
       short_desc: req.body.short_desc
     }
-
     movies.push(newMovie)
     return res.status(201).send({
       message: 'Movie added successfully',
@@ -55,7 +54,6 @@ class Movies extends BaseHandler {
   static updateAMovie(req: Request, res: Response) {
     const movieId = Number(req.params.id)
     const getMovie = movies.find((movie) => movie.id === movieId)
-
     if (!getMovie) {
       return res
         .status(404)

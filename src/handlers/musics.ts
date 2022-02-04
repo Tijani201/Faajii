@@ -2,10 +2,10 @@ import { Request, Response } from 'express'
 import { musics } from '../data/musics'
 import { BaseHandler } from '../interfaces/handlers'
 
+// Get all Music
 class Musics extends BaseHandler {
-  // Get all musics
   static getAllMusics(req: Request, res: Response) {
-    return res.status(200).send( musics )
+    return res.status(200).send(musics)
   }
 
   // Get a music
@@ -40,7 +40,6 @@ class Musics extends BaseHandler {
       genre: req.body.genre,
       artist: req.body.artist
     }
-
     musics.push(newMusic)
     return res.status(201).send({
       message: 'Music added successfully',
@@ -52,7 +51,6 @@ class Musics extends BaseHandler {
   static updateAMusic(req: Request, res: Response) {
     const musicId = Number(req.params.id)
     const getMusic = musics.find((music) => music.id === musicId)
-
     if (!getMusic) {
       return res
         .status(404)
