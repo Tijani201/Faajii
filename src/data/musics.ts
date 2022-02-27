@@ -3,7 +3,7 @@ export type MusicType = {
   title: string
   country: string
   genre: string
-  artist: String
+  artist: string
 }
 
 export const musics: MusicType[] = [
