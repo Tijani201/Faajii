@@ -2,7 +2,7 @@
 
 An entertainment api about Movies and Musics.
 
-## What we worked with
+# What we worked with
 
 - JavaScript (the scripting language)
 - Express js
@@ -10,7 +10,7 @@ An entertainment api about Movies and Musics.
 
 - [![Coverage Status](https://coveralls.io/repos/github/Tijani201/Faaji/badge.svg?branch=main)](https://coveralls.io/github/Tijani201/Faaji?branch=main)
 
-## Getting Started
+# Getting Started
 
 - npm init
 
