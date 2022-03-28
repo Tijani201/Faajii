@@ -25,3 +25,19 @@ An entertainment api about Movies and Musics.
 - To start the application, run
 
 `$ npm start`
+
+-To run Migration
+
+`$ npx sequelize-cli db:migrate`
+
+To undo Migration
+
+`$ npx sequelize-cli db:migrate:undo`
+
+-To run Seeders
+
+`$ npx sequelize-cli db:seed:all`
+
+To undo Seeders 
+
+`$ npx sequelize-cli db:seed:undo`
