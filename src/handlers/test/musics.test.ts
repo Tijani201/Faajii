@@ -6,12 +6,10 @@ const { expect } = chai
 const request = supertest.agent(app)
 
 const newMusic = {
-  title: 'Mortal Kombat',
-  country: 'Chinese',
-  genre: 'Action',
-  stars: 'Liu Kang',
-  language: 'Chinese',
-  release_date: 1997
+  title: 'Oshey',
+  country: 'Nigeria',
+  genre: 'Hip-hop',
+  artist: 'Kizz Daniel'
 }
 
 // test to get all music

@@ -3,9 +3,9 @@ import { movies } from '../data/movies'
 import { BaseHandler } from '../interfaces/handlers'
 
 // Get all movies
-class Movies extends BaseHandler {
+class Movie extends BaseHandler {
   static getAllMovies(req: Request, res: Response) {
-    return res.status(200).send(movies)
+    return res.status(200).send( movies )
   }
 
   // Get a movie
@@ -78,4 +78,4 @@ class Movies extends BaseHandler {
   }
 }
 
-export default Movies
+export default Movie

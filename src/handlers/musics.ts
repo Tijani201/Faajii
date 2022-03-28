@@ -1,11 +1,10 @@
 import { Request, Response } from 'express'
 import { musics } from '../data/musics'
 import { BaseHandler } from '../interfaces/handlers'
-
 // Get all Music
 class Musics extends BaseHandler {
-  static getAllMusics(req: Request, res: Response) {
-    return res.status(200).send(musics)
+ static getAllMusics(req: Request, res: Response) {
+    return res.status(200).send( musics )
   }
 
   // Get a music
