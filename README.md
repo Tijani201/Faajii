@@ -10,6 +10,8 @@ An entertainment api about Movies and Musics.
 
 - [![Coverage Status](https://coveralls.io/repos/github/Tijani201/Faaji/badge.svg?branch=main)](https://coveralls.io/github/Tijani201/Faaji?branch=main)
 
+-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Tijani201/Faaji/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Tijani201/Faaji/tree/main)
+
 # Getting Started
 
 - npm init
