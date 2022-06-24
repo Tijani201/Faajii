@@ -62,6 +62,6 @@ export const movies: MovieType[] = [
     stars: 'Sola Sobowale',
     language: 'English, Igbo',
     release_date: 2015,
-    short_desc: 'Amovies about tussle of powers among the bigger citizens'
+    short_desc: 'A movies about tussle of powers among the bigger citizens'
   }
 ]

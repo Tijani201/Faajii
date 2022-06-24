@@ -18,6 +18,26 @@ class Movies extends BaseHandler {
       return res.status(404).send({ message: 'MOVIES NOT FOUND!' })
     }
   }
+
+// Add a new movie
+   static addAMovie(req: Request, res: Response) {
+    const newMovie = {
+      id: req.body.id,
+      title: req.body.title,
+      country: req.body.country,
+      genre: req.body.genre,
+      stars: req.body.stars,
+      language: req.body.language,
+      release_date: req.body.release_date,
+      short_desc: req.body.short_desc
+    }
+
+    movies.push(newMovie)
+    return res.status(201).send({
+      message: 'Movie added successfully',
+      movies
+    })
+  }
 }
 
 export default Movies
