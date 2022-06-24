@@ -7,5 +7,7 @@ const router = express.Router()
 router.get('/movies', movies.getAllMovies)
 /* Route to get a school by id */
 router.get('/movies/:id', movies.getAMovie)
+/* Route to add a school */
+router.post('/movies/add', movies.addAMovie)
 
 export default router
