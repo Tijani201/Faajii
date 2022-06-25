@@ -38,6 +38,18 @@ class Movies extends BaseHandler {
       movies
     })
   }
+
+  // Delete A Movie
+  static deleteAMovie(req: Request, res: Response) {
+    const movieId = Number(req.params.id)
+    const theMovie = movies.find((movie) => movie.id === movieId)
+    if (theMovie) {
+      movies.filter((movie) => movie.id !== movieId)
+      return res.status(204).send()
+    } else {
+      return res.status(404).send({ message: 'Movie does not exist!' })
+    }
+  }
 }
 
 export default Movies
