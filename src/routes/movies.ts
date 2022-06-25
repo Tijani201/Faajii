@@ -9,5 +9,7 @@ router.get('/movies', movies.getAllMovies)
 router.get('/movies/:id', movies.getAMovie)
 /* Route to add a school */
 router.post('/movies/add', movies.addAMovie)
+/* Route to delete a movie by id */
+router.delete('/movies/:id', movies.deleteAMovie)
 
 export default router
