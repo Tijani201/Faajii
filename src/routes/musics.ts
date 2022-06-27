@@ -9,5 +9,7 @@ router.get('/musics', musics.getAllMusics)
 router.get('/musics/:id', musics.getAMusic)
 /* Route to add a music */
 router.post('/musics/add', musics.addAMusic)
+/* Route to update a music */
+router.put('/musics/:id', musics.updateAMusic)
 
 export default router
