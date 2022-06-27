@@ -2,11 +2,19 @@
   "name": "faaji",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
-    "build": "tsc",
-    "start": "nodemon ./src/bin/www.ts",
-    "test": "cross-env NODE_ENV=test mocha -r ts-node/register \"./**/*.test.ts\"",
-    "coverage": "nyc --reporter=lcov --reporter=text npm run test"
+    "clean": "rimraf build/",
+    "build": "npm run clean && tsc && npm run copy-files",
+    "start": "node ./build/bin/www.js",
+    "dev": "nodemon ./src/bin/www.ts",
+    "test": "cross-env NODE_ENV=test mocha -r ts-node/register \"./src/**/*.test.ts\"",
+    "copy-files": "copyfiles -u 1 src/spec/*.yaml build/",
+    "coverage": "nyc --reporter=lcov --reporter=text npm run test",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "undo:migration": "npx sequelize-cli db:migrate:undo:all"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
@@ -14,7 +22,7 @@
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
