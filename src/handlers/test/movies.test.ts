@@ -28,3 +28,27 @@ describe('POST /movies/add', () => {
       })
   })
 })
+
+// test to delete a movie
+describe('DELETE /movies/:id', () => {
+  it('should delete a movie', (done) => {
+    request
+      .delete('/api/movies/1')
+      .expect(204)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(204)
+        expect(res.body).to.be.an('object')
+        done()
+      })
+  })
+  it('should display a message if movie not found', (done) => {
+    request
+      .delete('/api/movies/10000')
+      .expect(404)
+      .end((err, res) => {
+        expect(res.status).to.be.equal(404)
+        expect(res.body.message).to.be.equal('Movie does not exist!')
+        done()
+      })
+  })
+})
